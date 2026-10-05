@@ -12,7 +12,7 @@ export async function initializeAccountsDatabase(): Promise<void> {
       status VARCHAR(32) NOT NULL,
       password_hash VARCHAR(255),
       created_at VARCHAR(40) NOT NULL
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
   `);
 
   await db.execute(`
@@ -23,7 +23,7 @@ export async function initializeAccountsDatabase(): Promise<void> {
       expires_at VARCHAR(40) NOT NULL,
       used_at VARCHAR(40),
       CONSTRAINT fk_password_tokens_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
   `);
 
   await db.execute(`
@@ -42,7 +42,7 @@ export async function initializeAccountsDatabase(): Promise<void> {
       license_plate VARCHAR(32) NOT NULL DEFAULT '',
       electric_car TINYINT NOT NULL DEFAULT 0,
       CONSTRAINT fk_user_profiles_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
   `);
 
   await db.execute("INSERT IGNORE INTO user_profiles (user_id) SELECT id FROM users");

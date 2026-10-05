@@ -34,6 +34,6 @@ export async function initializeTimeTrackingDatabase(): Promise<void> {
       decimal_hours DOUBLE NOT NULL,
       duration_minutes INT NOT NULL,
       UNIQUE KEY unique_user_date_tour (user_id, date, tour)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
   `);
 }
